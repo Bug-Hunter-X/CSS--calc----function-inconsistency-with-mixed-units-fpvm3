@@ -1,0 +1,27 @@
+To avoid this issue, it's best to break down complex `calc()` expressions into smaller, simpler calculations.  Instead of:
+```css
+width: calc(50% - 10px + 2em);
+```
+Consider these alternatives:
+
+**Alternative 1 (using variables):**
+```css
+:root {
+  --width-base: calc(50% - 10px);
+}
+
+#myElement {
+  width: calc(var(--width-base) + 2em);
+}
+```
+
+**Alternative 2 (separate calculations):**
+```css
+#myElement {
+  width: 50%;
+  margin-left: -10px;
+  margin-right: 2em;
+}
+```
+
+This ensures that the order of operations is clearly defined, and reduces browser inconsistencies.  The specific solution depends on the exact layout and desired behavior.  Remember to thoroughly test your CSS across different browsers to detect any unexpected behaviour.
